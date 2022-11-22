@@ -46,17 +46,27 @@
       </div>
       <div class="row">
         <div class="col">
-          <text-input
-            label="First Name"
-            name="firstName"
-            type="text"
-          ></text-input>
-          <text-input
-            label="Last Name"
-            name="lastName"
-            type="text"
-          ></text-input>
-          <text-input label="Email" name="email" type="email"></text-input>
+          <form action="" class="needs-validation mt-5" novalidate="novalidate">
+            <text-input
+              label="First Name"
+              name="firstName"
+              type="text"
+              required="true"
+            ></text-input>
+            <text-input
+              label="Last Name"
+              name="lastName"
+              type="text"
+              required="true"
+            ></text-input>
+            <text-input
+              label="Email"
+              name="email"
+              type="email"
+              required="true"
+            ></text-input>
+            <input type="submit" value="Save" class="btn btn-primary mt-5" />
+          </form>
         </div>
       </div>
     </div>
@@ -103,6 +113,30 @@
         },
         components: {
           TextInput,
+        },
+        mounted() {
+          (function () {
+            "use strict";
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll(".needs-validation");
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms).forEach(function (form) {
+              form.addEventListener(
+                "submit",
+                function (event) {
+                  if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+
+                  form.classList.add("was-validated");
+                },
+                false
+              );
+            });
+          })();
         },
       }).mount("#app");
     </script>
