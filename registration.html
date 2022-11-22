@@ -17,7 +17,7 @@
     <div class="container" id="app">
       <div class="row">
         <div class="col">
-          <reg-form></reg-form>
+          <reg-form :items="items"></reg-form>
         </div>
       </div>
     </div>
@@ -25,7 +25,13 @@
     <script src="form.js"></script>
     <script src="registration.js"></script>
     <script>
-      const data = {};
+      const data = {
+        items: [
+          { text: "Red", value: "red" },
+          { text: "Blue", value: "blue" },
+          { text: "Green", value: "green" },
+        ],
+      };
 
       const vm = Vue.createApp({
         data() {

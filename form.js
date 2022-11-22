@@ -13,3 +13,13 @@ const TextInput = {
         <input :type="type" :name="name" :placeholder="placeholder" :max="max" :min="min" :required="required" :autocomplete="name + '-new'" class="form-control" />
     `,
 };
+
+const SelectInput = {
+  props: ["name", "label", "items", "required"],
+  template: `
+    <label :for="name" class="form-label">{{label}}</label>
+    <select :name="name" :required="required" class="form-select">
+      <option v-for="option in items" :value="option.value">{{option.text}}</option>
+    </select>
+  `,
+};
