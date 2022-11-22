@@ -1,5 +1,10 @@
 const RegistrationForm = {
   props: ["items"],
+  data() {
+    return {
+      sameAddressChecked: false,
+    };
+  },
   template: `
         <h3>Register User</h3>
         <hr/>
@@ -10,6 +15,15 @@ const RegistrationForm = {
             <text-input name="password" label="Password" required="true" type="password" />
             <select-input name="color" label="Favorite Color" required="true" :items="items" />
             <check-input name="terms" label="Agree terms and conditions" required="required" />
+            <text-input name="address" label="Address" required="true" type="text" />
+            <text-input name="city" label="City" required="true" type="text" />
+            <text-input name="postalcode" label="Postal Code" required="true" type="text" />
+            <check-input name="sameAddress" label="Same as communication address" v-model="sameAddressChecked" @click="sameAddress" />
+            <div v-if="sameAddressChecked === false">
+                <text-input name="mailingAddress" label="Mailing Address" type="text" />
+                <text-input name="mailingCity" label="Mailing City" type="text" />
+                <text-input name="mailingPostalcode" label="Mailing Postal Code" type="text" />
+            </div>
             <hr />
             <input type="submit" class="btn btn-outline-primary" value="Register" />
         </form>
@@ -18,6 +32,11 @@ const RegistrationForm = {
     "text-input": TextInput,
     "select-input": SelectInput,
     "check-input": CheckBoxInput,
+  },
+  methods: {
+    sameAddress() {
+      this.sameAddressChecked = !this.sameAddressChecked;
+    },
   },
   mounted() {
     (function () {

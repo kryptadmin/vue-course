@@ -31,7 +31,7 @@ const CheckBoxInput = {
   template: `
     <div class="mb-3">
       <div class="form-check">
-        <input class="form-check-input" :name="name" :required="required" :value="value" :id="name" />
+        <input class="form-check-input" :name="name" :required="required" type="checkbox" :value="value" :id="name" />
         <label :for="name" class="form-check-label">{{label}}</label>
       </div>
     </div>
