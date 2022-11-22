@@ -77,26 +77,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.min.js"></script>
+    <script src="form.js"></script>
     <script>
       let data = {
         message: "Hello, vue!",
         counter: 0,
-      };
-
-      const TextInput = {
-        props: {
-          name: String,
-          label: String,
-          placeholder: String,
-          type: String,
-          min: String,
-          max: String,
-          required: String,
-        },
-        template: `
-            <label :for="name" class="form-label">{{label}}</label>
-            <input :type="type" :name="name" :placeholder="placeholder" :max="max" :min="min" :required="required" class="form-control" />
-        `,
       };
 
       const vm = Vue.createApp({
